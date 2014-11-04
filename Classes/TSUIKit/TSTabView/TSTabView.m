@@ -250,7 +250,7 @@
 - (void)selectTabAtIndex:(NSInteger)index animated:(BOOL)animated internal:(BOOL)internal
 {
     VerboseLog();
-    if(animated && abs(_navigationMenu.selectedSection - index) > 1)
+    if(animated && labs(_navigationMenu.selectedSection - index) > 1)
     {
         [self smartSwapTabToIndex:index];
     }
@@ -280,7 +280,7 @@
     
     [_scrollView bringSubviewToFront:view];
     
-    int tmpIndex = (_navigationMenu.selectedSection - index > 0 ? _navigationMenu.selectedSection - 1 : _navigationMenu.selectedSection + 1);
+    NSInteger tmpIndex = (_navigationMenu.selectedSection - index > 0 ? _navigationMenu.selectedSection - 1 : _navigationMenu.selectedSection + 1);
     view.frame = CGRectMake(_scrollView.frame.size.width * tmpIndex, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
     
     
@@ -403,7 +403,7 @@
     }
     else if(_draggingInfo.justFinished) // Dragging has just finished. Check what page would be selected after deceleration animation stops
     {
-        int tabIndex = _navigationMenu.selectedSection;
+        NSInteger tabIndex = _navigationMenu.selectedSection;
         if(_scrollView.contentOffset.x > _navigationMenu.selectedSection * _scrollView.frame.size.width)
         {
             if(_scrollView.contentOffset.x > _draggingInfo.lastScrollOffset)

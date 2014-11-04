@@ -487,7 +487,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCell];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"Row %d",indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Row %ld",(long)indexPath.row];
     return cell;
 }
 

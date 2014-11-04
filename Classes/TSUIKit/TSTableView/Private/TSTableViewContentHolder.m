@@ -509,7 +509,7 @@
             row.frame = rect;
             if(row.rowView)
             {
-                for(int i = columnIndex; i < row.rowView.cells.count;  ++i)
+                for(NSInteger i = columnIndex; i < row.rowView.cells.count;  ++i)
                 {
                     TSTableViewCell *cell = row.rowView.cells[i];
                     CGRect rect = cell.frame;
@@ -559,7 +559,7 @@
     
     // change position of rows that are follow modified row
     CGFloat delta = subRow.frame.size.height - prevHeight;
-    for(int i = subRowIndex + 1; i < subrows.count;  ++i)
+    for(NSInteger i = subRowIndex + 1; i < subrows.count;  ++i)
     {
         TSTableViewRowProxy *row = subrows[i];
         CGRect rect = row.frame;

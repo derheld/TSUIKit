@@ -161,13 +161,13 @@
 
 - (IBAction)numberOfLeftItemsValueChanged
 {
-    int count = [_dataSource1 numberOfItemsFromLeftSide:YES];
+    NSInteger count = [_dataSource1 numberOfItemsFromLeftSide:YES];
     int index = (count ? arc4random() % count : 0);
     if(self.numberOfLeftItems.value > count) // increase
     {
         SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING(
         [self.dataSources enumerateObjectsUsingBlock:^(TSNavigationStripModel *dataSource, NSUInteger idx, BOOL *stop) {
-            TSNavigationStripItem *item = [self performSelector:NSSelectorFromString([NSString stringWithFormat:@"createItem%dWithIndex:",idx + 1]) withObject:@(index)];
+            TSNavigationStripItem *item = [self performSelector:NSSelectorFromString([NSString stringWithFormat:@"createItem%luWithIndex:",idx + 1]) withObject:@(index)];
             [dataSource insertNewItem:item atIndex:index fromLeft:YES animated:YES];
         }];
                                                );
@@ -182,13 +182,13 @@
 
 - (IBAction)numberOfSectionsValueChanged
 {
-    int count = [_dataSource1 numberOfSections];
+    NSInteger count = [_dataSource1 numberOfSections];
     int index = (count ? arc4random() % count : 0);
     if(self.numberOfSections.value > count) // increase
     {
         SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING(
         [self.dataSources enumerateObjectsUsingBlock:^(TSNavigationStripModel *dataSource, NSUInteger idx, BOOL *stop) {
-            TSNavigationStripSection *section = [self performSelector:NSSelectorFromString([NSString stringWithFormat:@"createSection%dWithIndex:",idx + 1]) withObject:@(index)];
+            TSNavigationStripSection *section = [self performSelector:NSSelectorFromString([NSString stringWithFormat:@"createSection%luWithIndex:",idx + 1]) withObject:@(index)];
             [dataSource insertNewSection:section atIndex:index animated:YES];
         }];
                                                );
@@ -203,13 +203,13 @@
 
 - (IBAction)numberOfRightItemsValueChanged
 {
-    int count = [_dataSource1 numberOfItemsFromLeftSide:NO];
+    NSInteger count = [_dataSource1 numberOfItemsFromLeftSide:NO];
     int index = (count ? arc4random() % count : 0);
     if(self.numberOfRightItems.value > count) // increase
     {
         SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING(
         [self.dataSources enumerateObjectsUsingBlock:^(TSNavigationStripModel *dataSource, NSUInteger idx, BOOL *stop) {
-            TSNavigationStripItem *item = [self performSelector:NSSelectorFromString([NSString stringWithFormat:@"createItem%dWithIndex:",idx + 1]) withObject:@(index)];
+            TSNavigationStripItem *item = [self performSelector:NSSelectorFromString([NSString stringWithFormat:@"createItem%luWithIndex:",idx + 1]) withObject:@(index)];
             [dataSource insertNewItem:item atIndex:index fromLeft:NO animated:YES];
         }];
                                                );

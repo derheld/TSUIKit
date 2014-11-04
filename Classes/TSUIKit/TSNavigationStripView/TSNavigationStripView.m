@@ -684,7 +684,7 @@
 - (CGFloat)sectionWidthAtIndex:(NSInteger)index
 {
     CGFloat sectionsContainerWidth = [self sectionsContainerWidth];
-    int sectionsCount = [self.dataSource numberOfSections];
+    NSInteger sectionsCount = [self.dataSource numberOfSections];
     float width = self.sectionWidth;
     if(_sectionsAligment == UIViewContentModeScaleAspectFill)
     {
@@ -943,7 +943,7 @@
     }];
     [items removeAllObjects];
     
-    int itemsCount = [self numberOfItemsFromLeftSide:leftSide];
+    NSInteger itemsCount = [self numberOfItemsFromLeftSide:leftSide];
     float x = 0;
     for(int i = 0; i < itemsCount; ++i)
     {
@@ -1098,7 +1098,7 @@
 - (void)updateSections
 {
     VerboseLog();
-    int sectionsCount = [self.dataSource numberOfSections];
+    NSInteger sectionsCount = [self.dataSource numberOfSections];
     
     if(_selectedSection >= sectionsCount)
     {
@@ -1296,7 +1296,7 @@
         
         [TSUtils performViewAnimationBlock:^{
             selectedItemInfo.container.frame = CGRectMake(selectedItemInfo.container.frame.origin.x, selectedItemInfo.container.frame.origin.y, newWidth, selectedItemInfo.container.frame.size.height);
-            for(int i = itemIndex + 1; i < items.count; ++i)
+            for(NSInteger i = itemIndex + 1; i < items.count; ++i)
             {
                 TSNavigationStripComponentInfo *itemInfo = items[i];
                 itemInfo.container.frame = CGRectMake(itemInfo.container.frame.origin.x + delta, itemInfo.container.frame.origin.y, itemInfo.container.frame.size.width, itemInfo.container.frame.size.height);
@@ -1339,7 +1339,7 @@
     } animated:animated];
     
     // update right side navigation button appearance
-    int sectionsCount = [_dataSource numberOfSections];
+    NSInteger sectionsCount = [_dataSource numberOfSections];
     enabled = _selectedSection < sectionsCount - 1;
     hidden = _navigationButtonsHidden || (_autohideNavigationButtons && !enabled);
 
@@ -1377,7 +1377,7 @@
         // update sections width
         if(_sectionsAligment == UIViewContentModeRight)
         {
-            for (int i = _sections.count - 1; i >= 0; i--)
+            for (NSInteger i = _sections.count - 1; i >= 0; i--)
             {
                 TSNavigationStripComponentInfo *sectionInfo = [_sections objectAtIndex:i];
                 CGRect rect = sectionInfo.container.frame;
@@ -1517,7 +1517,7 @@
     
     for(int i = 0; i < _sections.count; ++i)
     {
-        int j = _selectedSection + i;
+        NSInteger j = _selectedSection + i;
         if(0 <= j && j < _sections.count)
         {
             TSNavigationStripComponentInfo *info = _sections[j];
@@ -1582,7 +1582,7 @@
 - (void)itemButtonPressed:(UIButton *)sender
 {
     VerboseLog();
-    NSInteger index = abs(sender.tag) - 1;
+    NSInteger index = labs(sender.tag) - 1;
     BOOL leftSide = (sender.tag < 0);
     if(sender.selected)
     {
@@ -1600,7 +1600,7 @@
 
 - (void)sectionTapGestureRecognizer:(UITapGestureRecognizer *)recognizer
 {
-    int sectionIndex = recognizer.view.tag;
+    NSInteger sectionIndex = recognizer.view.tag;
     if(sectionIndex == _selectedSection)
     {
         if(self.delegate && [self.delegate respondsToSelector:@selector(navigationStripDidRecognizeTapOnSelectedSection:)])
@@ -1615,7 +1615,7 @@
 - (void)selectSectionAtIndex:(NSInteger)index animated:(BOOL)animated internal:(BOOL)internal
 {
     VerboseLog();
-    int sectionsCount = [_dataSource numberOfSections];
+    NSInteger sectionsCount = [_dataSource numberOfSections];
     if( 0 <= index && index < sectionsCount)
     {
         if(internal && self.delegate && [self.delegate respondsToSelector:@selector(navigationStrip:willSelectSectionAtIndex:animated:)])
@@ -1733,7 +1733,7 @@
         // correct start positions to ensure smooth insert animation
         if(_sections.count > 1)
         {
-            int idx;
+            NSInteger idx;
             if(_sectionsAligment == UIViewContentModeLeft ||
               (_sectionsAligment == UIViewContentModeCenter && index > _selectedSection))
             {
@@ -1845,7 +1845,7 @@
     [TSUtils performViewAnimationBlock:^{
         // Iterate through items that are going to move right
         CGFloat x = originX;
-        for (int i = realIndex; i < items.count; ++i)
+        for (NSInteger i = realIndex; i < items.count; ++i)
         {
             TSNavigationStripComponentInfo *info = items[i];
             info.container.frame = CGRectMake(x, info.container.frame.origin.y, info.container.frame.size.width, info.container.frame.size.height);
@@ -1900,7 +1900,7 @@
             
             CGFloat x = originX;
             // Iterate through items that are going to move left
-            for (int i = index; i < items.count; ++i)
+            for (NSInteger i = index; i < items.count; ++i)
             {
                 TSNavigationStripComponentInfo *info = items[i];
                 info.container.frame = CGRectMake(x, info.container.frame.origin.y, info.container.frame.size.width, info.container.frame.size.height);

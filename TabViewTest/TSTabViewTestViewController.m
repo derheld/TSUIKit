@@ -475,13 +475,13 @@ const CGFloat kArrowHeight = 4;
 
 - (IBAction)numberOfTabsValueChanged
 {
-    int count = [_tabViewModel1 numberOfSections];
+    NSInteger count = [_tabViewModel1 numberOfSections];
     int index = (count ? arc4random() % count : 0);
     if(self.numberOfTabs.value > count) // increase
     {
         SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING(
         [self.dataSources enumerateObjectsUsingBlock:^(TSTabViewModel *dataSource, NSUInteger idx, BOOL *stop) {
-            TSTabViewSection *section = [self performSelector:NSSelectorFromString([NSString stringWithFormat:@"createSection%dWithIndex:",idx + 1]) withObject:@(index)];
+            TSTabViewSection *section = [self performSelector:NSSelectorFromString([NSString stringWithFormat:@"createSection%luWithIndex:",idx + 1]) withObject:@(index)];
             [dataSource insertNewTab:section atIndex:index animated:YES];
         }];
                                                );
