@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TSUIKit"
-  s.version      = "0.14"
+  s.version      = "0.15"
   s.summary      = "UI components for iOS."
 
   s.description  = <<-DESC
@@ -29,8 +29,8 @@ It provides smooth animations for item selection and dynamic content modificatio
   s.license      = { :type => 'MIT', :file => 'Classes/LICENSE'}
   s.author       = { "Viacheslav-Radchenko" => "viacheslav.radchenko@gmail.com" }
   s.platform     = :ios, '5.0'
-  s.source       = { :git => "https://github.com/derheld/TSUIKit.git", :tag => "0.14" }
-  s.source_files  = 'Classes', 'Classes/TSUIKit/TSTableView/**/*.{h,m}'
+  s.source       = { :git => "https://github.com/derheld/TSUIKit.git", :tag => "0.15" }
+  s.source_files  = 'Classes', 'Classes/TSUIKit/TSTableView/**/*.{h,m}', 'Classes/TSUIKit/TSMisc/*.{h,m}'
   s.framework  = 'QuartzCore'
   s.requires_arc = true
 
