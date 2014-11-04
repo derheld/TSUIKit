@@ -29,7 +29,7 @@ It provides smooth animations for item selection and dynamic content modificatio
   s.license      = { :type => 'MIT', :file => 'Classes/LICENSE'}
   s.author       = { "Viacheslav-Radchenko" => "viacheslav.radchenko@gmail.com" }
   s.platform     = :ios, '5.0'
-  s.source       = { :git => "https://github.com/derheld/TSUIKit.git", :tag => "0.1" }
+  s.source       = { :git => "https://github.com/derheld/TSUIKit.git", :tag => "0.12" }
   s.source_files  = 'Classes', 'Classes/TSTableView/*.{h,m}'
   s.framework  = 'QuartzCore'
   s.requires_arc = true
